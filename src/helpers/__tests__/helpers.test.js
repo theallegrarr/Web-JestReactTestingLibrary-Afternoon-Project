@@ -28,6 +28,23 @@ describe('sum', () => {
 
 describe('multiply', () => {
   // write tests! <================================================
+  it('can multiply numbers', () => {
+    expect(helpers.multiply(2, 3)).toBe(6);
+    expect(helpers.multiply(4, 3)).toBe(12);
+    expect(helpers.multiply(1, 3)).toBe(3);
+  });
+
+  it('will not accept strings', () => {
+    expect(() => helpers.multiply('aim', 'foo')).toThrow();
+    expect(() => helpers.multiply('1', '27')).toThrow();
+    expect(() => helpers.multiply('*', '---')).toThrow();
+  });
+
+  it('will multiply negative numbers', () => {
+    expect(helpers.multiply(-1, 10)).toBe(-10);
+    expect(helpers.multiply(-5, -5)).toBe(25);
+    expect(helpers.multiply(3, -21)).toBe(-63);
+  });
 });
 
 describe('personMaker', () => {
@@ -41,4 +58,9 @@ describe('personMaker', () => {
   });
 
   // write more tests! <===========================================
+  it('object should have id, name and age', () => {
+    expect(helpers.personMaker('peter', 4)).toHaveProperty('name')
+    expect(helpers.personMaker('ron', 4)).toHaveProperty('age')
+    expect(helpers.personMaker('feb', 4)).toHaveProperty('id')
+  });
 });
